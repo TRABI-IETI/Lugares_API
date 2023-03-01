@@ -1,5 +1,6 @@
 package com.example.proyecto.lugares.services.impl;
 
+import com.example.proyecto.lugares.exception.PlaceNotFoundException;
 import com.example.proyecto.lugares.model.Place;
 import com.example.proyecto.lugares.services.PlaceServices;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,15 @@ public class PlaceServicesImpl implements PlaceServices {
     public Place createPlace(Place place) {
         places.put(place.getName(), place);
         return places.get(place.getName());
+    }
+
+    @Override
+    public Place updatePlace(String name, Place place) throws PlaceNotFoundException{
+        if(!places.containsKey(name)){
+            throw new PlaceNotFoundException(place.getName());
+        }else {
+            places.replace(name,place);
+        }
+        return places.get(name);
     }
 }

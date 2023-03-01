@@ -9,4 +9,6 @@ public interface PlaceServices {
     List<Place> getAllPlaces();
 
     Place createPlace(Place place);
+
+    Place updatePlace(String name, Place place);
 }
