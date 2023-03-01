@@ -21,6 +21,10 @@ public class PlaceServicesImpl implements PlaceServices {
     }
 
     @Override
+    public Place getPlaceByName(String name){
+        return places.get(name);
+    }
+    @Override
     public Place createPlace(Place place) {
         places.put(place.getName(), place);
         return places.get(place.getName());
