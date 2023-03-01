@@ -7,10 +7,7 @@ import com.example.proyecto.lugares.services.PlaceServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class PlaceServicesImpl implements PlaceServices {
@@ -26,9 +23,9 @@ public class PlaceServicesImpl implements PlaceServices {
     }
 
     @Override
-    public Place createPlace(Place place) {
-        places.put(place.getName(), place);
-        return places.get(place.getName());
+    public Optional<Place> createPlace(Place place) {
+        placeRepository.save(place);
+        return placeRepository.findById(place.getName());
     }
 
     @Override
