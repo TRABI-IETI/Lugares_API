@@ -2,7 +2,9 @@ package com.example.proyecto.lugares.services.impl;
 
 import com.example.proyecto.lugares.exception.PlaceNotFoundException;
 import com.example.proyecto.lugares.model.Place;
+import com.example.proyecto.lugares.persistence.PlaceRepository;
 import com.example.proyecto.lugares.services.PlaceServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,6 +14,9 @@ import java.util.Map;
 
 @Service
 public class PlaceServicesImpl implements PlaceServices {
+
+    @Autowired
+    PlaceRepository placeRepository;
 
     Map<String, Place> places = new HashMap<>();
 

@@ -1,7 +1,14 @@
 package com.example.proyecto.lugares.model;
 
-public class Place {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
+
+@Document(collection = "place_collection")
+public class Place implements Serializable {
+
+    @Id
     private String name;
     private String price;
     private String address;
