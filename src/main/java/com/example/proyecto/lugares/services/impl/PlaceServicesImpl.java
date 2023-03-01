@@ -2,22 +2,24 @@ package com.example.proyecto.lugares.services.impl;
 
 import com.example.proyecto.lugares.exception.PlaceNotFoundException;
 import com.example.proyecto.lugares.model.Place;
+import com.example.proyecto.lugares.persistence.PlaceRepository;
 import com.example.proyecto.lugares.services.PlaceServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class PlaceServicesImpl implements PlaceServices {
+
+    @Autowired
+    PlaceRepository placeRepository;
 
     Map<String, Place> places = new HashMap<>();
 
     @Override
     public List<Place> getAllPlaces() {
-        return new ArrayList<>(places.values());
+        return placeRepository.findAll();
     }
 
     @Override
@@ -25,19 +27,21 @@ public class PlaceServicesImpl implements PlaceServices {
         return places.get(name);
     }
     @Override
-    public Place createPlace(Place place) {
-        places.put(place.getName(), place);
-        return places.get(place.getName());
+    public Optional<Place> createPlace(Place place) {
+        placeRepository.save(place);
+        return placeRepository.findById(place.getName());
     }
 
     @Override
-    public Place updatePlace(String name, Place place) throws PlaceNotFoundException{
-        if(!places.containsKey(name)){
+    public Optional<Place> updatePlace(String name, Place place) throws PlaceNotFoundException{
+        if(!placeRepository.existsById(name)){
             throw new PlaceNotFoundException(place.getName());
         }else {
-            places.replace(name,place);
+            Optional<Place> place1 = placeRepository.findById(name);
+            place1.get().update(place);
+            placeRepository.save(place1.get());
         }
-        return places.get(name);
+        return placeRepository.findById(name);
     }
 
     @Override
