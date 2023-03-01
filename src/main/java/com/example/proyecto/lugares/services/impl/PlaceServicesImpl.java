@@ -35,4 +35,13 @@ public class PlaceServicesImpl implements PlaceServices {
         }
         return places.get(name);
     }
+
+    @Override
+    public void deletePlace(String name) throws PlaceNotFoundException{
+        if(!places.containsKey(name)){
+            throw new PlaceNotFoundException(name);
+        }else{
+            places.remove(name);
+        }
+    }
 }

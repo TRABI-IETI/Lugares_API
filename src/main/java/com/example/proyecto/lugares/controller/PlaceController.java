@@ -30,4 +30,10 @@ public class PlaceController {
     public ResponseEntity<?> updatePlace(@RequestBody Place place, @PathVariable("name") String name){
         return ResponseEntity.ok(placeServices.updatePlace(name, place));
     }
+
+    @DeleteMapping("{name}")
+    public ResponseEntity<?> deletePlace(@PathVariable("name") String name){
+        placeServices.deletePlace(name);
+        return ResponseEntity.ok().build();
+    }
 }

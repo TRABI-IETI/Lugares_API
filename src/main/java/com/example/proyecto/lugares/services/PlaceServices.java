@@ -11,4 +11,6 @@ public interface PlaceServices {
     Place createPlace(Place place);
 
     Place updatePlace(String name, Place place);
+
+    void deletePlace(String name);
 }
