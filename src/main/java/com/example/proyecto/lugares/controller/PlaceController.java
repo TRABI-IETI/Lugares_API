@@ -1,11 +1,10 @@
 package com.example.proyecto.lugares.controller;
 
+import com.example.proyecto.lugares.model.Place;
 import com.example.proyecto.lugares.services.PlaceServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/places")
@@ -20,5 +19,10 @@ public class PlaceController {
     @GetMapping
     public ResponseEntity<?> getAllPlaces(){
         return ResponseEntity.ok(placeServices.getAllPlaces());
+    }
+
+    @PostMapping
+    public ResponseEntity<?> createPlace(@RequestBody Place place){
+        return ResponseEntity.ok(placeServices.createPlace(place));
     }
 }

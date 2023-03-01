@@ -18,4 +18,10 @@ public class PlaceServicesImpl implements PlaceServices {
     public List<Place> getAllPlaces() {
         return new ArrayList<>(places.values());
     }
+
+    @Override
+    public Place createPlace(Place place) {
+        places.put(place.getName(), place);
+        return places.get(place.getName());
+    }
 }
