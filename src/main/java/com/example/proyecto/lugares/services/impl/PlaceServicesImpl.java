@@ -22,7 +22,7 @@ public class PlaceServicesImpl implements PlaceServices {
 
     @Override
     public List<Place> getAllPlaces() {
-        return new ArrayList<>(places.values());
+        return placeRepository.findAll();
     }
 
     @Override
