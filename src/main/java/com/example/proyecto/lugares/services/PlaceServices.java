@@ -11,7 +11,7 @@ public interface PlaceServices {
 
     Optional<Place> createPlace(Place place);
 
-    Place updatePlace(String name, Place place);
+    Optional<Place> updatePlace(String name, Place place);
 
     void deletePlace(String name);
 }

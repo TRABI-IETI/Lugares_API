@@ -75,4 +75,12 @@ public class Place implements Serializable {
     public void setRestrictions(String restrictions) {
         this.restrictions = restrictions;
     }
+
+    public void update(Place place){
+        this.address = place.getAddress();
+        this.phone = place.getPhone();
+        this.price = place.getPrice();
+        this.schedule = place.getSchedule();
+        this.restrictions = place.getRestrictions();
+    }
 }

@@ -28,6 +28,7 @@ public class PlaceController {
 
     @PutMapping("{name}")
     public ResponseEntity<?> updatePlace(@RequestBody Place place, @PathVariable("name") String name){
+        System.out.println(name);
         return ResponseEntity.ok(placeServices.updatePlace(name, place));
     }
 
