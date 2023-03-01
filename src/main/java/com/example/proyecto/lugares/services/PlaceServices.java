@@ -8,6 +8,7 @@ public interface PlaceServices {
 
     List<Place> getAllPlaces();
 
+    Place getPlaceByName(String name);
     Place createPlace(Place place);
 
     Place updatePlace(String name, Place place);

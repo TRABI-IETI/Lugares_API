@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/places")
+@RequestMapping("v1/places")
 public class PlaceController {
 
     PlaceServices placeServices;
@@ -19,6 +19,11 @@ public class PlaceController {
     @GetMapping
     public ResponseEntity<?> getAllPlaces(){
         return ResponseEntity.ok(placeServices.getAllPlaces());
+    }
+
+    @GetMapping("{name}")
+    public ResponseEntity<?> getPlaceByName(@PathVariable("name") String name){
+        return ResponseEntity.ok(placeServices.getPlaceByName(name));
     }
 
     @PostMapping
