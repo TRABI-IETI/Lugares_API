@@ -47,10 +47,11 @@ public class PlaceServicesImpl implements PlaceServices {
 
     @Override
     public void deletePlace(String name) throws PlaceNotFoundException{
-        if(!places.containsKey(name)){
+        if(!placeRepository.existsById(name)){
             throw new PlaceNotFoundException(name);
         }else{
-            places.remove(name);
+            Optional<Place> place = placeRepository.findById(name);
+            placeRepository.delete(place.get());
         }
     }
 }
