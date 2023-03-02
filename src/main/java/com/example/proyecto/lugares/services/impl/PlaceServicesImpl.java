@@ -23,6 +23,11 @@ public class PlaceServicesImpl implements PlaceServices {
     }
 
     @Override
+    public Optional<Place> getPlaceByName(String name){
+
+        return Optional.ofNullable(placeRepository.findById(name).orElseThrow(() -> new PlaceNotFoundException(name)));
+    }
+    @Override
     public Optional<Place> createPlace(Place place) {
         placeRepository.save(place);
         return placeRepository.findById(place.getName());

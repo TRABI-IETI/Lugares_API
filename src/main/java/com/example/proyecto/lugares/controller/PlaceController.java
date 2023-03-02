@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/places")
+@RequestMapping("v1/places")
 public class PlaceController {
 
     PlaceServices placeServices;
@@ -21,6 +21,11 @@ public class PlaceController {
         return ResponseEntity.ok(placeServices.getAllPlaces());
     }
 
+    @GetMapping("{name}")
+    public ResponseEntity<?> getPlaceByName(@PathVariable("name") String name){
+        return ResponseEntity.ok(placeServices.getPlaceByName(name));
+    }
+
     @PostMapping
     public ResponseEntity<?> createPlace(@RequestBody Place place){
         return ResponseEntity.ok(placeServices.createPlace(place));
@@ -28,7 +33,6 @@ public class PlaceController {
 
     @PutMapping("{name}")
     public ResponseEntity<?> updatePlace(@RequestBody Place place, @PathVariable("name") String name){
-        System.out.println(name);
         return ResponseEntity.ok(placeServices.updatePlace(name, place));
     }
 
