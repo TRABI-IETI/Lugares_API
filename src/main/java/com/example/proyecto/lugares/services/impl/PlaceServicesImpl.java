@@ -45,7 +45,8 @@ public class PlaceServicesImpl implements PlaceServices {
         if(!placeRepository.existsById(name)){
             throw new PlaceNotFoundException(name);
         }else{
-            placeRepository.getByName(name);
+            Optional<Place> place = placeRepository.findById(name);
+            placeRepository.delete(place.get());
         }
     }
 }
