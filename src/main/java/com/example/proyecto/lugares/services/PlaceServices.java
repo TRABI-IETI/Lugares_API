@@ -9,7 +9,7 @@ public interface PlaceServices {
 
     List<Place> getAllPlaces();
 
-    Place getPlaceByName(String name);
+    Optional<Place> getPlaceByName(String name);
 
     Optional<Place> createPlace(Place place);
 
