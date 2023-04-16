@@ -16,16 +16,21 @@ public class Place implements Serializable {
     private String schedule;
     private String restrictions;
 
+    private String description;
+    private String imagen;
+
     public Place() {
     }
 
-    public Place(String name, String price, String address, String phone, String schedule, String restrictions) {
+    public Place(String name, String price, String address, String phone, String schedule, String restrictions, String imagen, String description) {
         this.name = name;
         this.price = price;
         this.address = address;
         this.phone = phone;
         this.schedule = schedule;
         this.restrictions = restrictions;
+        this.imagen = imagen;
+        this.description = description;
     }
 
     public String getName() {
@@ -82,5 +87,23 @@ public class Place implements Serializable {
         this.price = place.getPrice();
         this.schedule = place.getSchedule();
         this.restrictions = place.getRestrictions();
+        this.imagen = place.getImagen();
+        this.description = place.getDescription();
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
