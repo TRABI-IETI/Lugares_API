@@ -22,7 +22,7 @@ public class Place implements Serializable {
     public Place() {
     }
 
-    public Place(String name, String price, String address, String phone, String schedule, String restrictions, String imagen, String description) {
+    public Place(String name, String price, String address, String phone, String schedule, String restrictions, String description, String imagen) {
         this.name = name;
         this.price = price;
         this.address = address;
